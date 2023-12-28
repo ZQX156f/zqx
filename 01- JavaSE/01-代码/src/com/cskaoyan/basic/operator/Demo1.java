@@ -63,5 +63,10 @@ public class Demo1 {
         //       4  +   6  +   6*10
         int y = (x++) + (++x) + (x*10);
         System.out.println(y);
+
+        int three;
+        // 先赋值在使用
+        three = 100;
+        System.out.println(three);
     }
 }

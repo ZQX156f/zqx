@@ -1,4 +1,4 @@
-package com.cskaoyan.variable;
+package com.cskaoyan.basic.variable;
 
 /*
         浮点数因为遵循IEEE754标准，有一个比较大的缺点：由于表示有效数字的位数是有限的，所以精度是受限的。

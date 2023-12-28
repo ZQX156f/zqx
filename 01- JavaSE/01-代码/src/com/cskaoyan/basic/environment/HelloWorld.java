@@ -1,4 +1,4 @@
-package com.cskaoyan.environment;
+package com.cskaoyan.basic.environment;
 
 public class HelloWorld {
 

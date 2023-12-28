@@ -1,4 +1,4 @@
-package com.cskaoyan.datatype;
+package com.cskaoyan.basic.datatype;
 
 /*
      以String类型为例，简单演示引用数据类型

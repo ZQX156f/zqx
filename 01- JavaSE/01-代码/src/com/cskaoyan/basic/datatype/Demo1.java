@@ -1,4 +1,4 @@
-package com.cskaoyan.datatype;
+package com.cskaoyan.basic.datatype;
 
 /*
       基本数据类型（Base Data Type）指的是由Java语言默认提供的八种数据类型，它们的存储空间一般都是固定的。

@@ -1,4 +1,4 @@
-package com.cskaoyan.cast;
+package com.cskaoyan.basic.cast;
 
 /*
         自动类型转化:

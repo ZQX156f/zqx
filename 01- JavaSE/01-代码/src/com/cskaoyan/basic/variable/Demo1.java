@@ -1,4 +1,4 @@
-package com.cskaoyan.variable;
+package com.cskaoyan.basic.variable;
 
 /*
       我们现阶段学习的都是局部变量, 局部：

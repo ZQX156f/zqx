@@ -1,4 +1,4 @@
-package baisc.identifier;
+package com.cskaoyan.basic.identifier;
 
 /*
         - 标识符的开头必须是：

@@ -1,4 +1,4 @@
-package com.cskaoyan.cast;
+package com.cskaoyan.basic.cast;
 
 /*
         整数常量运算的特殊性：

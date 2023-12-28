@@ -1,4 +1,4 @@
-package com.cskaoyan.variable;
+package com.cskaoyan.basic.variable;
 
 
 /*
