@@ -11,6 +11,7 @@ public class Demo1 {
         int 你 = 1;
         int の = 1;
 
+
         // 数字字符不能打头
         //int 1a = 1;
 
