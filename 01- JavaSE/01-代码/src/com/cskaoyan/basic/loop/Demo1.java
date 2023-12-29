@@ -14,18 +14,32 @@ package com.cskaoyan.basic.loop;
 public class Demo1 {
 
     public static void main(String[] args) {
-        for (int i = 0; i < 10; i++) {
-            System.out.println("hello, world");
-        }
+//        for (int i = 0; i < 10; i++) {
+//            System.out.println("hello, world");
+//        }
         // i的作用域仅限于循环体
         //System.out.println(i);
 
 
-        int j = 0;
-        for (; j < 10; j++) {
+//        int j = 0;
+//        for (; j < 10; j++) {
+//            System.out.println("hello, world");
+//        }
+//        System.out.println(j);
+
+//      死循环
+//        for (int i = 0; ; i++) {
+//            System.out.println("hello, world");
+//        }
+
+//        死循环
+        for (int i = 0; i < 10 ;) {
             System.out.println("hello, world");
         }
-        System.out.println(j);
+//        死循环
+        for (;;) {
+
+        }
 
     }
 }
