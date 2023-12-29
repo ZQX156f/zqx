@@ -21,6 +21,29 @@ public class Demo1 {
         // \\表示的是一个'\'
         System.out.println('\\');
 
+        char c = 'c';
+        // 单引号字符本身
+        System.out.println('\'');
+
+        String s = "";
+        // 双引号
+        System.out.println('\"');
+
+        // \ddd 三个八进制树表示一个字符
+        System.out.println("\141");
+
+        // uxxxx
+        System.out.println("\u0061");
+
+
+
+        System.out.println("aaabbbc\b");
+        System.out.println("aaa\nbbbc");
+        System.out.println("aaa\tbbb");
+        System.out.println("aaa\\bbb");
+        System.out.println("aaa\'bbb");
+        System.out.println("\111");
+
 
     }
 }
