@@ -1,4 +1,4 @@
-package com.cskaoyan.array;
+package com.cskaoyan.array.define;
 
 /*
       数组的声明：
