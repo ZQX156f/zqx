@@ -19,10 +19,25 @@ public class EX2 {
         System.out.println(a);
         System.out.println(a[0]);
         System.out.println(a[1]);
+        System.out.println(a.length);
 
         // 声明第二个数组
         // 引用变量可以相互赋值(相同类型的引用变量)
         int[] b = a;
+        System.out.println("----------2---------");
+        System.out.println(b);
+        System.out.println(b[0]);
+        System.out.println(b[1]);
+        System.out.println(a.length);
+
+        // 修改第二个数组的元素值
+        b[1] = 999;
+        System.out.println("----------1---------");
+        System.out.println(a);
+        System.out.println(a[0]);
+        System.out.println(a[1]);
+        System.out.println(a.length);
+
 
     }
 }
