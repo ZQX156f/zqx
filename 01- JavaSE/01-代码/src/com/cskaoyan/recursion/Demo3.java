@@ -14,6 +14,7 @@ public class Demo3 {
     public static void main(String[] args) {
         int sum = sum(5);
         System.out.println(sum);
+
     }
 
 
