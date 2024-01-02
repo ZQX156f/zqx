@@ -20,8 +20,6 @@ public class EX2 {
 
         // 僵尸攻击植物
         zombie.attack();
-
-
     }
 }
 
