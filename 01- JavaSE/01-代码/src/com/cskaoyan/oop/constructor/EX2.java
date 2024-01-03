@@ -1,5 +1,7 @@
 package com.cskaoyan.oop.constructor;
 
+import java.util.Scanner;
+
 public class EX2 {
 
     public static void main(String[] args) {
@@ -17,7 +19,6 @@ public class EX2 {
         // 植物的攻击方法
         plant.attack();
 
-
         // 僵尸攻击植物
         zombie.attack();
     }
@@ -30,6 +31,7 @@ class Plant {
     int hp;
     // 攻击力
     int damage;
+
 
     // 一个植物正在攻击的僵尸
     Zombie plantZ;
@@ -48,7 +50,7 @@ class Plant {
 
     // 行为
     public void attack() {
-        System.out.println(this.name + "正在攻击" + plantZ.name);
+        System.out.println(name + "正在攻击" + plantZ.name);
     }
 
     public void beAttacked() {
