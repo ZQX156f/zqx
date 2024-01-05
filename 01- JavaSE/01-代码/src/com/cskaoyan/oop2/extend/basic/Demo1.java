@@ -19,7 +19,9 @@ public class Demo1 {
 
     public static void main(String[] args) {
         // 用一个父类类型的引用变量  指向 一个自类类型的对象
-        Person father = new Teacher();
+        Teacher teacher = new Teacher();
+        //
+        Person father = teacher;
 
 
         // 是否可以用一个子类类型的引用  指向父类类型的对象?

@@ -24,9 +24,10 @@ class ImplicitFather {
 
     int i;
 
-//    public ImplicitFather() {
-//        System.out.println("ImplicitFather");
-//    }
+    public ImplicitFather() {
+        i = 100;
+        System.out.println("ImplicitFather");
+    }
 
     public ImplicitFather(int i) {
         this.i = i;
@@ -37,8 +38,12 @@ class ImplicitSon extends ImplicitFather {
 
     int j;
 
+    public ImplicitSon() {
+
+    }
+
     public ImplicitSon(int j) {
-        //
+        //  自己调用有参构造方法
         this.j = j;
     }
 }
