@@ -44,3 +44,14 @@ class GranSon1 extends Son {
 class GrandSon2 extends Son {
 
 }
+
+// 循环继承的例子
+//class AA extends BB {
+//
+//}
+//
+//class BB extends CC {
+//
+//}
+//
+//class CC extends AA {}
