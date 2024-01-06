@@ -24,8 +24,6 @@ public class Demo1 {
         OverrideFather overrideFather = new OverrideFather();
         overrideFather.fatherMethod();
 
-
-
         // a. 访问范围 (父)
         //overrideFather.fatherMethod();
         //overrideFather.sameMethod();
@@ -59,10 +57,7 @@ public class Demo1 {
         // b. 访问结果
         //father.sameMethod(); // son
 
-
-
         OverrideSon son = new OverrideSon();
-
         // 在子类方法中，调用同名方法
         //son.sonMethod();
 

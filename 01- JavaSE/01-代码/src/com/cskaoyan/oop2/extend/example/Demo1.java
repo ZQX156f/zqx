@@ -13,6 +13,17 @@ package com.cskaoyan.oop2.extend.example;
  */
 public class Demo1 {
 
+    public static void main(String[] args) {
+        FirstTypeDuck firstTypeDuck = new FirstTypeDuck();
+        firstTypeDuck.fly();
+
+        SecondTypeDuck secondTypeDuck = new SecondTypeDuck();
+        secondTypeDuck.fly();
+
+        ModelDuck modelDuck = new ModelDuck();
+        modelDuck.fly();
+    }
+
 
 
 
@@ -51,4 +62,9 @@ class ThirdTypeDuck extends BaseDuck{
 
 class ModelDuck extends BaseDuck {
 
+
+    // 在子类中修改父类的fly方法的实现，让模型鸭不飞
+    // 通过方法覆盖来实现
+    public void fly() {
+    }
 }
