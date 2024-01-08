@@ -10,24 +10,24 @@ package com.cskaoyan.oop3.arg;
   3. 形参如果写一个接口：调用方法时需要传入的是该接口的子类对象
 
 方法的返回值
-
 方法的返回值类型，和在方法体中返回具体值（对象）时，不一定要求数据类型完全一致。
-
 基本类型：方法体中，返回一个具体的值不要求和返回值类型完全一致，存在自动类型提升。
 引用类型： 在方法体中，返回一个对象时不要求就是返回值类型的对象，存在自动向上转型。
   1. 返回值类型如果写一个普通类：可以返回该类的对象或者该类的子类对象
   2. 返回值类型如果写一个抽象类：返回该抽象类的子类对象。
   3. 返回值类型如果写一个接口：返回该接口的子类对象。
-
  */
 public class Demo1 {
 
 
     public static void main(String[] args) {
-
         // 测试方法参数
         testArg();
+    }
 
+    public static int  basicReturnValue() {
+        byte b = 1;
+        return b;
     }
 
 
@@ -41,7 +41,16 @@ public class Demo1 {
         return new Son();
     }
 
+    public static AbstractFather returnAbsObj() {
+        // 返回抽象类的子类对象
+        return new AbstractSon();
+    }
 
+    public static IInterface returnInterfaceObj() {
+
+        //返回接口子类对象
+        return new InterfaceSon();
+    }
 
     /*
           ctrl + alt + m
@@ -82,8 +91,6 @@ public class Demo1 {
     public static void interfaceObjMethod(IInterface iInterface) {
 
     }
-
-
 }
 
 class Father {}
