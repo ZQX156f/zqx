@@ -26,16 +26,27 @@ class Dog extends Animal {
     }
 }
 
-abstract class SpecialSkill {
+/*
+      接口描述功能集合， 用于扩展已有类
+ */
+abstract interface SpecialSkill {
     public abstract void walk();
 }
 
-class SpecialDog extends Dog {
+class SpecialDog extends Dog implements SpecialSkill {
 
+    @Override
+    public void walk() {
+        System.out.println("dog walk");
+    }
 }
 
-class SpecialCat extends Cat {
+class SpecialCat extends Cat implements SpecialSkill {
 
+    @Override
+    public void walk() {
+        System.out.println("cat walk");
+    }
 }
 
 
