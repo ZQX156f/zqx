@@ -4,6 +4,8 @@ public class Demo {
     public static void main(String[] args) {
         PrimaryStudent primaryStudent = new PrimaryStudent(666,888,"hello");
         System.out.println(primaryStudent.psVar);
+
+        StringBuffer stringBuffer = new StringBuffer();
     }
 }
 class Person {

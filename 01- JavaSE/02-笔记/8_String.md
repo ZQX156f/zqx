@@ -136,7 +136,7 @@ public class Demo {
         // temp 指向
         String temp = s;
         // 更改s内容
-        s = "aaa";
+        temp += "aaa";
         // 打印
         System.out.println("temp = " + temp);
         System.out.println("s = " + s);
@@ -148,21 +148,7 @@ public class Demo {
 
 
 
-![image-20221013142443901](img/image-20221013142443901.png)
-
-2
-
-```java 
-String s = "张三";
-System.out.println("s = " + s);
-s = "hello 张三";
-System.out.println("s = " + s);
-```
-
-
-输出结果是多少?原因是什么?
-
-![image-20221013142833360](img/image-20221013142833360.png)
+![](8_String.assets/字符串可变性.png)
 
 
 
