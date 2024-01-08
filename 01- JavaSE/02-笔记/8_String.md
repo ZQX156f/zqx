@@ -148,7 +148,7 @@ public class Demo {
 
 
 
-![](8_String.assets/字符串可变性.png)
+![](img/字符串可变性.png)
 
 
 

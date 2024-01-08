@@ -9,6 +9,27 @@ package com.cskaoyan.oop3.abstrcats.basic;
         3.经理包含4个属性：姓名、工号、工资以及奖金（bonus），行为是工作
  */
 public class EX {
+
+    public static void main(String[] args) {
+
+        BaseEmployee employee = null;
+
+        employee = new Employee("zs", 1, 15000);
+        employee.printStaff();
+        employee.work();
+
+
+        employee = new Coder("lisi", 2, 30000);
+        employee.printStaff();
+        Coder coder = (Coder) employee;
+        employee.work();
+        coder.moreWork();
+
+        employee = new Manager("ww", 3, 50000, 50000);
+        employee.printStaff();
+        employee.work();
+
+    }
 }
 
 abstract class BaseEmployee {
@@ -51,6 +72,11 @@ abstract class BaseEmployee {
 
     public void setSalary(double salary) {
         this.salary = salary;
+    }
+
+    // 定义打印属性的方法,子类可以选择直接使用,也可以选择重写
+    public void printStaff() {
+        System.out.println("id是" + workId + "的员工,姓名是" + name + ",Ta的工资是" + salary);
     }
 }
 
@@ -108,5 +134,10 @@ class Manager extends BaseEmployee {
     @Override
     public void work() {
         System.out.println("陪客户吃喝玩乐");
+    }
+
+    @Override
+    public void printStaff() {
+        System.out.println("id是" + getWorkId() + "的员工,姓名是" + getName() + ",Ta的工资是" + (getSalary() + bonus));
     }
 }
