@@ -31,7 +31,7 @@ public class EX1 {
         String s2 = "Hello";
         // 编译器直接计算  "hello"
         String s3 = "Hel" + "lo";
-        String s4 = "Hel" + new String("lo") + "aaa";
+        String s4 = "Hel" + new String("lo");
         String s5 = new String("Hello");
         String s7 = "H";
         String s8 = "ello";

@@ -23,7 +23,7 @@ public class Demo1 {
 
     public static void main(String[] args) {
 
-        String s = "hello";
+        String s = "hello world";
         String s1 = new String("hEllo");
 
         // boolean equals(Object obj)
@@ -32,6 +32,21 @@ public class Demo1 {
 
         //boolean equalsIgnoreCase(String str)
         System.out.println(s1.equalsIgnoreCase(s));
+
+        //boolean contains(String str)
+        System.out.println(s.contains("ha"));
+
+        //boolean startsWith(String str)
+        System.out.println(s.startsWith("haaa"));
+
+        //boolean endsWith(String str)
+        // a.txt  b.mp4
+        System.out.println(s.endsWith("aaa"));
+
+        // boolean isEmpty()
+        String emptyString = new String("");
+        System.out.println(emptyString.isEmpty());
+
 
 
 
