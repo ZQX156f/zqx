@@ -24,21 +24,21 @@ public class Demo6 {
 
     public static void main(String[] args) throws CloneNotSupportedException {
 
-        CloneClass cloneClass = new CloneClass();
+        //CloneClass cloneClass = new CloneClass();
 
         // 可以调用clone方法，其他类对象的克隆，其他类覆盖了父类中的clone
-        CloneClass cloneObj = cloneClass.clone();
+        //CloneClass cloneObj = cloneClass.clone();
 
         // 比较成员变量值是否相同
-        System.out.println(cloneObj.equals(cloneClass));
-        System.out.println(cloneObj == cloneClass);
+        //System.out.println(cloneObj.equals(cloneClass));
+        //System.out.println(cloneObj == cloneClass);
 
         // 访问自己挎包子类继承的protected权限的成员方法
 //        Demo6 demo6 = new Demo6();
 //        demo6.clone();
 
         // 虽然Cloneable是一个空接口，但是类实现了Cloneable
-        Cloneable c = new CloneClass();
+        //Cloneable c = new CloneClass();
     }
 
 
@@ -48,20 +48,30 @@ class CloneClass implements Cloneable {
 
     int i;
 
+    public CloneClass(int i) {
+        this.i = i;
+    }
+
     public void testAccess() throws CloneNotSupportedException {
        // 挎包访问父类中的protected访问权限的成员
        this.clone();
 
 
-        CloneClass cloneClass = new CloneClass();
+        //CloneClass cloneClass = new CloneClass();
         //// 访问自己挎包子类继承的protected权限的成员方法
-        cloneClass.clone();
+        //cloneClass.clone();
 
     }
 
+//    @Override
+//    protected CloneClass clone() throws CloneNotSupportedException {
+//        return (CloneClass) super.clone();
+//    }
+
+
     @Override
-    protected CloneClass clone() throws CloneNotSupportedException {
-        return (CloneClass) super.clone();
+    protected Object clone() throws CloneNotSupportedException {
+        return new CloneClass(i);
     }
 
     @Override
