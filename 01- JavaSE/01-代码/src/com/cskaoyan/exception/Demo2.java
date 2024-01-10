@@ -37,8 +37,6 @@ public class Demo2 {
         // simpleTryCatch();
 
         //System.out.println("hello");
-
-
         // 同时处理多种不同类型的异常
         try {
 
@@ -52,7 +50,6 @@ public class Demo2 {
             ints = null;
             // 空指针
             System.out.println(ints[0]);
-
 
         } catch (ArithmeticException | ArrayIndexOutOfBoundsException e) {
 
