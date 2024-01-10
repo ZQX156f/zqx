@@ -15,7 +15,7 @@ package com.cskaoyan.exception;
  */
 public class Demo6 {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         record(-1);
     }
 
@@ -35,8 +35,11 @@ public class Demo6 {
             // 异常对象的抛出
             //throw runtimeException;
 
-            Exception exception = new Exception("非法分数！");
-            throw exception;
+            //Exception exception = new Exception("非法分数！");
+            //throw exception;
+
+            throw new Exception("非法分数！");
+
         }
 
         // throw 语句执行，之后代码都不会执行(方法执行结束)
