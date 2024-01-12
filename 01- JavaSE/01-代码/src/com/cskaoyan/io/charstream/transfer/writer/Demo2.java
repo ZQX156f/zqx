@@ -1,4 +1,4 @@
-package com.cskaoyan.io.charstream.transfer;
+package com.cskaoyan.io.charstream.transfer.writer;
 
 
 import java.io.*;

@@ -1,4 +1,4 @@
-package com.cskaoyan.io.charstream;
+package com.cskaoyan.io.charstream.basic;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
