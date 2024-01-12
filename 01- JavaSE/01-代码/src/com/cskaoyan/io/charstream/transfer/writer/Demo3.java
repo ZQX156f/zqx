@@ -11,7 +11,6 @@ import java.io.Writer;
      2. 所以当我们写入少量字符数据的时候, 数据可能保留在缓冲区中
      3. close会先调用flush方法，刷新编解码器的缓冲区
      4. flush方法强行将编解码器中的数据，写入底层流中
-
  */
 public class Demo3 {
 
