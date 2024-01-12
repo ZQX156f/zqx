@@ -6,6 +6,8 @@ import java.io.*;
         文件内容的复制
         1.  一次复制一个字节
         2. 一次复制一个字节数组
+        3. 使用缓冲字节流  一次复制一个字节
+        4. 使用缓冲字节流  一次复制一个字节数组
         为什么一次复制一个字节数组比一次复制一个字节要快？
  */
 public class EX1 {
@@ -21,7 +23,12 @@ public class EX1 {
 
         String srcPath = "d:\\demo\\vedio.mp4";
         String destPath = "d:\\vedio.mp4";
-        copyFileByBytes(srcPath, destPath);
+
+        // 未使用缓冲流，一次复制一个字节
+        //copyFileByByte(srcPath, destPath);
+
+        // 使用缓冲流，一次复制一个字节
+        bufferedCopyByByte(srcPath, destPath);
 
     }
 
@@ -70,6 +77,59 @@ public class EX1 {
         os.close();
         is.close();
 
+
+    }
+
+
+    public static void bufferedCopyByByte(String srcPath, String destPath) throws IOException {
+
+        // 1. 创建流对象
+        // 1) 缓冲字节输出流对象
+        OutputStream os = new BufferedOutputStream(new FileOutputStream(destPath));
+
+        // 2) 缓冲字节输入流对象
+        InputStream is = new BufferedInputStream(new FileInputStream(srcPath));
+
+
+        // 2. 复制
+        int read;
+
+        while ((read = is.read()) != -1) {
+            // 写一个字节
+            os.write(read);
+        }
+
+        // 关闭流
+        is.close();
+        os.close();
+
+    }
+
+
+    public static void bufferedCopyByBytes(String srcPath, String destPath) throws IOException {
+
+        // 1. 创建流对象
+        // 1) 缓冲字节输出流对象
+        OutputStream os = new BufferedOutputStream(new FileOutputStream(destPath));
+
+        // 2) 缓冲字节输入流对象
+        InputStream is = new BufferedInputStream(new FileInputStream(srcPath));
+
+
+        // 2. 复制
+        int readCount;
+        byte[] bytes = new byte[1024];
+
+        while ((readCount = is.read(bytes)) != -1) {
+
+            // 写字节数组中的数据
+            os.write(bytes, 0, readCount);
+        }
+
+
+        // 关闭流
+        is.close();
+        os.close();
 
     }
 
