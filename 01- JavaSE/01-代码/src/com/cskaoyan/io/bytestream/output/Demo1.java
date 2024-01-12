@@ -34,7 +34,5 @@ public class Demo1 {
         // FileOutputStream(File file)
         File file = new File("a.txt");
         OutputStream os = new FileOutputStream(file);
-
-
     }
 }
