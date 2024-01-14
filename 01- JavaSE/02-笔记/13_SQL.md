@@ -1,6 +1,4 @@
-
-
-学习目标：<span style=color:yellow;background:red>**SQL是重点，需要重点掌握。**</span>
+<img src="13_SQL.assets/商品信息.png" style="width:80%; float:left">学习目标：<span style=color:yellow;background:red>**SQL是重点，需要重点掌握。**</span>
 
 - 掌握什么是数据库。为什么有数据库这个东西
 - 熟悉库、表、数据，内部组织形式
@@ -1009,12 +1007,6 @@ select english,math from students;
 >GROUP BY后面如果是A,B,C：
 >SELECT后面跟的列，只要包含在A,B,C中就可以了。可以是A,B,C，也可以是A,B，也可以是A,C，也可以是A，但不能是A,D。
 >*/
->
->/*
->HAVING后面的字段如果是表中现有的列，则这个列必须出现在SELECT后面
->SELECT后面如果是A,C：
->HAVING后面跟的列，只要包含在A,C中就可以了，可以是A,C，也可以是A，也可以是C，但不能是B。
->*/
 >```
 >
 
@@ -1468,7 +1460,6 @@ create table test_auto_increment(
 >eg:
 >// 用户和用户详情 
 >// 商品和商品详情
->// IP表和电脑表
 >```
 >
 >- 所有的一一对应的表(一对一情况)，在逻辑上，都可以合并为一个表。
@@ -1493,8 +1484,6 @@ create table test_auto_increment(
 >
 >```Java
 >eg:
->// 订单和商品
->一个产品中可能有多个订单,  一个订单中可能买了多个商品 
 >// 剧本和演员
 >一个演员可能出演了多个剧本,  一个剧本中可能包含多个演员
 >```
@@ -1522,31 +1511,21 @@ create table test_auto_increment(
 
 我们在设计表的时候，应该考虑之后业务的变化，来`尽量`让每一列的数据保持原子性。
 
-#### 第二范式: 唯一性
+#### 第二范式: 消除非主键属性对主键属性的部分依赖
 
-数据的唯一性。 要求表中每行数据有唯一标识，不存在部分依赖
+要求非主键字段的值必须完全依赖主键，不存在部分依赖
 
 如:  
 
-通过name+nickname+province+city+county组合标识一个用户(不满足唯一性)
+<img src="./img/数据库二范式.png " style="width:80%; float:left">
 
-<img src="./img/sql/唯一性.png" style="width:60%; float:left">
+应该将商品信息单独存储在一张表中：
 
-通过id唯一标识一个用户(满足唯一性)
+<img src="./img/商品信息.png" style="width:80%; float:left">
 
-<img src="./img/sql/原子性2.png" style="width:60%; float:left">
+#### 第三范式: 消除非主键属性对主键属性的传递依赖
 
-```SQL
-create table test1(
-	id int primary key auto_increment
-)
-```
-
-
-
-#### 第三范式: 不冗余
-
-字段不要冗余。
+确保数据表中的每一个非主键字段都和主键字段直接相关，也就是说，要求数据表中的所有非主键 字段不能依赖于其他非主键字段
 
 如: 班级名称
 
@@ -1554,7 +1533,7 @@ score表中存储了班级名与班级id
 
 <img src="./img/sql/冗余1.png" style="width:80%; float:left">
 
-class表中也存储了班级名称
+应该将班级的名称单独存储，在score表中只包含class_id
 
 <img src="./img/sql/冗余2.png" style="width:30%; float:left">
 
