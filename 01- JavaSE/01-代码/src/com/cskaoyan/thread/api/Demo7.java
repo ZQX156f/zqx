@@ -14,7 +14,6 @@ package com.cskaoyan.thread.api;
 
       注意事项：
         该方法必须在启动线程前调用。
-
  */
 public class Demo7 {
 
