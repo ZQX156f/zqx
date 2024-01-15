@@ -1,5 +1,9 @@
 package com.cskaoyan.thread.threadsafe.edition3;
 
+/*
+      演示基于同步代码块解决多线程数据安全问题
+
+ */
 public class Demo1 {
 
     public static void main(String[] args) {
@@ -41,12 +45,8 @@ class SalesTask implements Runnable {
 //                  throw new RuntimeException(e);
 //              }
 //          }
-//
 //      }
-
-
             while (this.tickets > 0) {
-
                 try {
                     // 模拟售票的延迟
                     Thread.sleep(100);
@@ -54,14 +54,14 @@ class SalesTask implements Runnable {
                     throw new RuntimeException(e);
                 }
 
-                synchronized (lockObj) {
+                synchronized (this.lockObj) {
+
+                    // 如果发生了异常
                     // double check
                     if (tickets > 0) {
                         System.out.println(Thread.currentThread().getName() + "售出了第" + this.tickets-- + "张票");
                     }
                 }
-
-
             }
 
 
