@@ -31,6 +31,19 @@ class SalesTask implements Runnable {
         // 有票，就可以售票
 
         // 使用同步代码块
+//      synchronized (lockObj) {
+//          while (this.tickets > 0) {
+//
+//              try {
+//                  // 模拟售票的延迟
+//                  Thread.sleep(100);
+//              } catch (InterruptedException e) {
+//                  throw new RuntimeException(e);
+//              }
+//          }
+//
+//      }
+
 
             while (this.tickets > 0) {
 
