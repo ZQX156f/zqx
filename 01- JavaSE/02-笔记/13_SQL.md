@@ -1,4 +1,4 @@
-<img src="13_SQL.assets/商品信息.png" style="width:80%; float:left">学习目标：<span style=color:yellow;background:red>**SQL是重点，需要重点掌握。**</span>
+学习目标：<span style=color:yellow;background:red>**SQL是重点，需要重点掌握。**</span>
 
 - 掌握什么是数据库。为什么有数据库这个东西
 - 熟悉库、表、数据，内部组织形式
