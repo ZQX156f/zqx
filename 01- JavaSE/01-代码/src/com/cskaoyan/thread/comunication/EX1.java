@@ -24,9 +24,9 @@ class OddThread implements Runnable {
 
     @Override
     public void run() {
-        synchronized (EX1.OBJECT) {
-            // 1 3 5 7
-            for (int i = 1; i < 100; i+=2) {
+        // 1 3 5 7
+        for (int i = 1; i < 100; i+=2) {
+            synchronized (EX1.OBJECT) {
                 // notify 把对方唤醒
                 EX1.OBJECT.notify();
                 // 打印
@@ -53,9 +53,9 @@ class EvenThread implements Runnable {
     @Override
     public void run() {
         // sync
-        synchronized (EX1.OBJECT) {
+        for (int i = 2; i <= 100; i+=2) {
+            synchronized (EX1.OBJECT) {
             // 2 4 6 8 10
-            for (int i = 2; i <= 100; i+=2) {
                 // 唤醒另一个线程
                 EX1.OBJECT.notify();
                 // 打印
