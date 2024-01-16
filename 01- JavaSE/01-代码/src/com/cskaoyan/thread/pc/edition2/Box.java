@@ -13,6 +13,8 @@ public class Box {
     // 蒸笼中的包子
     Food food;
 
+    int i;
+
 
     /*
         生产者调用的方法，运行在生产者线程中

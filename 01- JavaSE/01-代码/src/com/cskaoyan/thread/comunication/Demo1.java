@@ -28,6 +28,24 @@ import com.cskaoyan.oop.block.ex.Demo;
           a.该线程发布(release)对此监视器的所有权
           b.等待(阻塞)
 
+    面试题：
+Thread.sleep  VS Object.wait()
+    1. 所属不同：
+        a. sleep定义在Thread类，静态方法
+        b. wait定义在 Object类中，非静态方法
+
+    2. 唤醒条件不同
+        a. sleep: 休眠时间到
+        b. wait: 在其他线程中，在同一个锁对象上，调用了notify或notifyAll方法
+
+    3. 使用条件不同：
+        a. sleep 没有任何前提条件
+        b. wait(), 必须当前线程，持有锁对象，锁对象上调用wait()
+
+    4. 休眠时，对锁对象的持有，不同：（最最核心的区别）
+      a. 线程因为sleep方法而处于阻塞状态的时候，在阻塞的时候不会放弃对锁的持有
+      b. 但是wait()方法，会在阻塞的时候，放弃锁对象持有
+
  */
 public class Demo1 {
 
