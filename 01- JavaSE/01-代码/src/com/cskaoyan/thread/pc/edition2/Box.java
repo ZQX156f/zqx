@@ -15,12 +15,11 @@ public class Box {
 
     int i;
 
-
     /*
         生产者调用的方法，运行在生产者线程中
      */
     public synchronized void setFood(Food food) {
-
+        // this
         if (this.food != null) {
             // 蒸笼里有包子
             try {
@@ -35,7 +34,6 @@ public class Box {
 
             // 通知消费者吃包子
             this.notifyAll();
-
         }
 
 

@@ -24,7 +24,6 @@ public class ProducerTask implements Runnable{
 
                 if (!box.isEmpty()) {
                     // 蒸笼不空，阻止自己
-
                     try {
                         box.wait();
                     } catch (InterruptedException e) {

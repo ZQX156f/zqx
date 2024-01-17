@@ -9,6 +9,8 @@ public class Box {
     // 表示蒸笼中的包子
     Food food;
 
+    int i;
+
     /*
         生产者使用
      */

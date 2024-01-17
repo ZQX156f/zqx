@@ -269,7 +269,7 @@ show create database test; -- 查看之前怎么创建的test数据库(sql语句
 
 注:一些注意事项
 
->* MySQL中字符集:  UTF8 和UTF8MB4的区别 : 需要注意
+>* MySQL中字符集:  UTF8MB3 和UTF8MB4的区别 : 需要注意
 >
 >```Java
 >(1)  5.5.3 版本以后的才支持UTF8MB4
