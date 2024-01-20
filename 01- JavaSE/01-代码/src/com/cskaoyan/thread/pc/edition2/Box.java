@@ -31,7 +31,6 @@ public class Box {
             // 蒸笼为空
             this.food = food;
             System.out.println(Thread.currentThread().getName() + "做了" + food);
-
             // 通知消费者吃包子
             this.notifyAll();
         }

@@ -963,7 +963,7 @@ select english,math from students;
 >
 >注意:  如上查询, 当我们进行多字段排序的时候, 会先满足第一个列的排序要求, 如果第一列一致的话, 再按照第二列进行排序, 以此类推.
 
-### Group By
+### Group By having
 
 >使用 GROUP BY 关键字,对数据进行分组
 >
@@ -999,9 +999,15 @@ select english,math from students;
 >- HAVING、SELECT，GROUP BY，他们后面列之间的关系
 >
 >```SQL
->SELECT A, C,COUNT(A)
+>SELECT A, C,COUNT(D)
 >GROUP BY A,B,C
->HAVING A>1
+>HAVING A>1，count(列名)
+>列名:
+>1.  select (A,B,c) (A,B) (A,C) (B,C) (A) (B) (C)
+>2.  having (A,B,c) (A,B) (A,C) (B,C) (A) (B) (C)
+>1  ON_FULL_GROUP_by  直接报错
+>2. 关闭ON_FULL_GROUP_by，不确定
+>
 >/*
 >SELECT后面的字段如果是表中现有的列，则GROUP BY子句中也必须有这个列。
 >GROUP BY后面如果是A,B,C：
@@ -1248,7 +1254,7 @@ create table test_auto_increment(
 >
 >alter table `students` 
 >add column `class_id` int null after `math`,
->add constraint `班级` foreign key (`class_id`) references `class` (`id`);
+>add constraint `fk_` foreign key (`class_id`) references `class` (`id`);
 >-- CONSTRAINT 外键名 FOREIGN KEY(要作为外键字段名) REFERENCES 主表名(主表中关联的字段);
 >-- ALTER TABLE <表名> DROP FOREIGN KEY <外键约束名>;删除外键
 >
@@ -1264,14 +1270,15 @@ create table test_auto_increment(
 >	name varchar(20),
 >	province_id int,
 >	-- 声明外键
->    -- CONSTRAINT 外键名称 foreign key(列) references 表名(列名)
+>-- CONSTRAINT 外键名称 foreign key(列) references 表名(列名)
 >	CONSTRAINT fk_pid foreign key(province_id) REFERENCES province(id)
 >);
 >
-> 
+>
 >insert into province values(41, "河南省");
 >insert into province values(43, "湖南省");
 >insert into province values(42, "湖北省");
+>insert into province values(23, "黑龙江");
 >
 >-- 城市表插入
 >
@@ -1551,7 +1558,7 @@ score表中存储了班级名与班级id
 >  `id` int(11) NOT NULL PRIMARY KEY,
 >  `user_id` int(11) NULL DEFAULT NULL,
 >  `equip_name` varchar(255) NULL DEFAULT NULL
->) ;
+>);
 >```
 >
 >```SQL
