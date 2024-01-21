@@ -17,14 +17,9 @@ public class Demo1 {
         // 扩容
         array = new String[100];
         // 其他数据的维护
-
-
         // 2. 对象的方式来存储(代码和数据 严重耦合)
         Strings strings = new Strings();
         //strings.s1 = ;
-
-
-
     }
 }
 
