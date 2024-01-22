@@ -1,11 +1,6 @@
 package com.cskaoyan.datastructure.linknode;
 
-
-/*
-
-    判断是否有环
- */
-public class EX1 {
+public class EX2 {
 
     public static void main(String[] args) {
 
@@ -22,21 +17,18 @@ public class EX1 {
         d.next = e;
 
         // 成环
-        //e.next = c;
+        e.next = c;
 
-        boolean result = detectCycle(a);
-        System.out.println(result);
-
+        ListNode node = findCycleStart(a);
+        System.out.println(node.value);
 
     }
 
 
-
-
-    public static boolean detectCycle(ListNode head) {
+    public static ListNode findCycleStart(ListNode head) {
 
         if (head == null) {
-            return false;
+           return null;
         }
 
         // 慢指针
@@ -53,25 +45,23 @@ public class EX1 {
 
             if (slow == fast) {
                 // 相遇
-                return true;
+                break;
             }
         }
 
-        // 没有相遇
-        return false;
+        if (slow != fast) {
+            // 无环，返回null
+            return null;
+        }
+
+        //  有环，slow == fast
+        fast = head;
+        while (fast != slow) {
+            fast = fast.next;
+            slow = slow.next;
+        }
+
+        return fast;
 
     }
 }
-
-class ListNode {
-
-    String value;
-
-    ListNode next;
-
-    public ListNode(String value) {
-        this.value = value;
-    }
-}
-
-
