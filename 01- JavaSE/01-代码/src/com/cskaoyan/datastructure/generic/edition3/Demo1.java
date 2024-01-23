@@ -26,6 +26,14 @@ public class Demo1 {
     }
 }
 
+/*
+        // 泛型的定义
+        // T : type
+        // E : element
+        // K : key
+        // V : value
+
+ */
 class User<T,E,V> {
     T t;
     E e;

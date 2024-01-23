@@ -12,7 +12,7 @@ import java.util.Objects;
         数组扩容
         元素移动
  */
-public class MyArrayList {
+public class MyArrayList<T> {
 
     private static final int INIT_CAPACITY = 10;
 
@@ -25,14 +25,14 @@ public class MyArrayList {
     private int size;
 
     public MyArrayList() {
-        elementData = new String[INIT_CAPACITY];
+        elementData = new Object[INIT_CAPACITY];
     }
 
     public MyArrayList(int size) {
         if (size < 0 || size > MAX_CAPACITY) {
                 throw new IllegalArgumentException("size: " + size);
         }
-        elementData = new String[size];
+        elementData = new Object[size];
     }
 
 
@@ -40,7 +40,7 @@ public class MyArrayList {
     /*
             在最后一个元素之后，添加value
          */
-    public boolean add(Object value) {
+    public boolean add(T value) {
         // 考虑数组的容量，size == elementData.length
         ensureCapacity(size + 1);
         elementData[size] = value;
@@ -51,7 +51,7 @@ public class MyArrayList {
     /*
          删除数组中执行的value值的元素
      */
-    public boolean remove(Object value) {
+    public boolean remove(T value) {
         if (size == 0) {
             throw new NoSuchElementException(value.toString());
         }
@@ -81,7 +81,7 @@ public class MyArrayList {
     }
 
 
-    public boolean set(Object oldValue, Object newValue) {
+    public boolean set(T oldValue, T newValue) {
         if (size == 0) {
             throw new NoSuchElementException(oldValue.toString());
         }
@@ -96,7 +96,7 @@ public class MyArrayList {
         return false;
     }
 
-    public boolean contains(Object value) {
+    public boolean contains(T value) {
         if (size == 0) {
             return false;
         }
@@ -109,7 +109,7 @@ public class MyArrayList {
         return false;
     }
 
-    public boolean add(int index, Object value) {
+    public boolean add(int index, T value) {
         // 判断下标的合法性
         rangeCheckForAdd(index);
 
@@ -130,7 +130,7 @@ public class MyArrayList {
      * @param index
      * @return
      */
-    public Object remove(int index) {
+    public T remove(int index) {
         // 检查下标的合法性
         rangeCheck(index);
 
@@ -144,22 +144,22 @@ public class MyArrayList {
         }
 
         size--;
-        return oldValue;
+        return (T) oldValue;
     }
 
-    public Object set(int index, Object value) {
+    public T set(int index, Object value) {
         // 检查下标的合法性
         rangeCheck(index);
 
         Object oldValue = elementData[index];
         elementData[index] = value;
-        return oldValue;
+        return (T) oldValue;
     }
 
-    public Object get(int index) {
+    public T get(int index) {
         // 检查下标的合法性
         rangeCheck(index);
-        return elementData[index];
+        return (T) elementData[index];
     }
 
     public void rangeCheck(int index) {

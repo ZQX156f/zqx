@@ -11,21 +11,25 @@ public class Test {
 
     public static void main(String[] args) {
 
-        MyArrayList myArrayList = new MyArrayList();
+        MyArrayList<String> myArrayList = new MyArrayList();
 
         // 添加数据
         myArrayList.add("1");
 
         // 添加整数
         Integer a = 1;
-        myArrayList.add(a);
+        //myArrayList.add(a);
 
         // 添加小数
         Float f = 15.5f;
-        myArrayList.add(a);
+        //myArrayList.add(a);
 
-        // 获取数据
-        Integer b = (Integer) myArrayList.get(0);
+        String s1 = myArrayList.get(0);
+        System.out.println(s1);
+
 
     }
 }
+
+class A {}
+class B extends A {}
