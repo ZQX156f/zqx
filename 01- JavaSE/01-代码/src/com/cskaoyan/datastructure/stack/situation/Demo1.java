@@ -36,9 +36,7 @@ public class Demo1 {
 
      */
     public static boolean judgeBrackets(String s) {
-
         MyLinkedStack<Character> stack = new MyLinkedStack<>();
-
         for (int i = 0; i < s.length(); i++) {
             char c = s.charAt(i);
             if (c == '{') {
@@ -48,7 +46,6 @@ public class Demo1 {
             } else if (c == '(') {
                 stack.push(')');
             } else if (c == '}' || c == ']' || c == ')') {
-
                 if (stack.isEmpty()) {
                     return false;
                 }
