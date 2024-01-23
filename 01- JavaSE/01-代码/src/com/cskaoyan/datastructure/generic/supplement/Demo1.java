@@ -18,6 +18,8 @@ package com.cskaoyan.datastructure.generic.supplement;
  *
  *    一个包装类对象 维护了 一个对应基本类型的数据的 值
  *
+ *    byte b = 10;
+ *
  *    装箱和拆箱
  *
  */
@@ -32,7 +34,7 @@ public class Demo1 {
     //box();
 
     //自动拆箱
-    //unbox();
+    unbox();
   }
 
   private static void example() {
@@ -58,8 +60,8 @@ public class Demo1 {
     //System.out.println(aInteger.intValue());
 
     // 对于取值范围在 -128 - 127 基本数据类型的整数值 他们所对应的 包装类对象
-    Integer i1 = 1000; // new Integer(10000)
-    Integer i2 = 1000;// new Integer(10000)
+    Integer i1 = 1000; // new Integer(120)
+    Integer i2 = 1000;// new Integer(120)
     System.out.println(i1 == i2);
   }
 
