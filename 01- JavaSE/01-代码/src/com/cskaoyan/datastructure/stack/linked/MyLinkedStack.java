@@ -53,6 +53,10 @@ public class MyLinkedStack<E> {
         return top.value;
     }
 
+    public boolean isEmpty() {
+        return size == 0;
+    }
+
 
 
     class Node {
