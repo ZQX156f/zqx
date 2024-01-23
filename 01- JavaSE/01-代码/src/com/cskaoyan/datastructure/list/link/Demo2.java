@@ -32,8 +32,6 @@ public class Demo2 {
         myDBLikedList.remove(3);
         myDBLikedList.remove(1);
         myDBLikedList.remove(0);
-
-
     }
 
     private static void testContent(MyDBLikedList myDBLikedList) {
