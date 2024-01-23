@@ -1,4 +1,4 @@
-package com.cskaoyan.datastructure.stack;
+package com.cskaoyan.datastructure.stack.linked;
 
 public class Test {
 
