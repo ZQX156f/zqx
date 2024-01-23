@@ -13,7 +13,6 @@ public class MyBSTree<T extends Comparable> {
     // 元素个数
     private int size;
 
-
     public boolean add (T t) {
 
         if (root == null) {
