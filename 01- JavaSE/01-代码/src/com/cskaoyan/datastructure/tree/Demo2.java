@@ -2,7 +2,7 @@ package com.cskaoyan.datastructure.tree;
 
 
 /*
-        测试儿茶搜索树
+        测试二叉搜索树
 
         //30 100 50 40 25 55 120 200 10 28 0 5 -1 27
 
@@ -28,8 +28,16 @@ public class Demo2 {
         comparableMyBSTree.add(-1);
         comparableMyBSTree.add(27);
 
+
+        //comparableMyBSTree.remove(30);
+
+
         //comparableMyBSTree.printPreOrder();
         //comparableMyBSTree.printInOrder();
+        //comparableMyBSTree.printPostOrder();
+
+        comparableMyBSTree.printBFS();
+
 
     }
 }

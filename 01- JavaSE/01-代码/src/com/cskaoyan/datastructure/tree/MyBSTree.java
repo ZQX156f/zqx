@@ -1,6 +1,7 @@
 package com.cskaoyan.datastructure.tree;
 
 import com.cskaoyan.datastructure.list.link.MyDBLinkedList;
+import com.cskaoyan.datastructure.queue.MyArrayQueue;
 import com.cskaoyan.datastructure.stack.linked.MyLinkedStack;
 
 import java.util.NoSuchElementException;
@@ -232,28 +233,49 @@ public class MyBSTree<T extends Comparable> {
 
 
     public void printPreOrder() {
-        MyDBLinkedList<T> list = new MyDBLinkedList<>();
+        MyDBLinkedList<T> first = new MyDBLinkedList<>();
+        preOrder(root, first);
+        System.out.println(first);
 
-        preOrder(root, list);
-
-        System.out.println(list);
-
+        MyDBLinkedList<T> second = new MyDBLinkedList<>();
+        preOrderNonRecursive(root,second);
+        System.out.println(second);
     }
 
     public void printInOrder() {
+        MyDBLinkedList<T> first = new MyDBLinkedList<>();
+        inOrder(root, first);
+        System.out.println(first);
+
+        MyDBLinkedList<T> second = new MyDBLinkedList<>();
+        inOderNonRecursive(root, second);
+        System.out.println(second);
+
+
+    }
+
+    public void printPostOrder() {
+        MyDBLinkedList<T> first = new MyDBLinkedList<>();
+        postOrder(root, first);
+        System.out.println(first);
+
+        MyDBLinkedList<T> second = new MyDBLinkedList<>();
+        postOderNonRecursive(root, second);
+        System.out.println(second);
+
+    }
+
+    public void printOrder() {
         MyDBLinkedList<T> list = new MyDBLinkedList<>();
 
-        inOrder(root, list);
+        postOrder(root, list);
 
         System.out.println(list);
     }
-
-
 
     /*
          递归先序遍历
      */
-
     public void preOrder(Node root, MyDBLinkedList<T> list) {
         if (root == null) {
             return;
@@ -293,18 +315,78 @@ public class MyBSTree<T extends Comparable> {
 
     }
 
+
     public void inOrder(Node root, MyDBLinkedList<T> list) {
         if (root == null) {
             return;
         }
 
         // 访问左子树
-        preOrder(root.left, list);
+        inOrder(root.left, list);
 
         // 先访问根
         list.add(root.value);
         // 访问右子树
-        preOrder(root.right, list);
+        inOrder(root.right, list);
+
+    }
+
+    /*
+        非递归的中序遍历
+     */
+    public void inOderNonRecursive(Node root, MyDBLinkedList<T> list) {
+
+        MyLinkedStack<Node> stack = new MyLinkedStack<>();
+
+        Node mid = root;
+
+        while (!stack.isEmpty() || mid != null) {
+            // mid 一直向左移动，一直到最左边
+            while (mid!= null) {
+                // 先将最后一个左子树节点，之前的左子树节点入栈
+                stack.push(mid);
+                // 向左移动
+                mid = mid.left;
+            }
+            // mid 等于 null 没有左子树的那个子树的根阶段
+            Node node = stack.pop();
+            //访问
+            list.add(node.value);
+            // mid变为 右子树
+            mid = node.right;
+        }
+
+    }
+
+    public void printBFS() {
+        MyDBLinkedList<T> list = new MyDBLinkedList<>();
+        bfs(root, list);
+        System.out.println(list.toString());
+    }
+
+
+    /*
+           层次遍历
+
+     */
+    public void bfs(Node root, MyDBLinkedList<T> list) {
+        MyArrayQueue<Node> queue = new MyArrayQueue<>();
+        // 先将根节点入队列
+        queue.offer(root);
+        while (!queue.isEmpty()) {
+
+            Node node = queue.poll();
+            // 访问
+            list.add(node.value);
+
+            if (node.left != null) {
+                queue.offer(node.left);
+            }
+
+            if (node.right != null) {
+                queue.offer(node.right);
+            }
+        }
 
     }
 
@@ -322,9 +404,36 @@ public class MyBSTree<T extends Comparable> {
         list.add(root.value);
     }
 
+    public void postOderNonRecursive(Node root, MyDBLinkedList<T> list) {
+
+        MyLinkedStack<Node> first = new MyLinkedStack<>();
+        MyLinkedStack<Node> second = new MyLinkedStack<>();
+
+        first.push(root);
+
+        while (!first.isEmpty()) {
+
+            Node rootNode = first.pop();
+            // 将一个树的根节点 放入第二个栈
+            second.push(rootNode);
+
+            // 向第一个栈中放入根节点的左右子树
+            if (rootNode.left != null) {
+                first.push(rootNode.left);
+            }
+
+            if (rootNode.right != null) {
+                first.push(rootNode.right);
+            }
+        }
+
+        while (!second.isEmpty()) {
+            Node node = second.pop();
+            list.add(node.value);
+        }
 
 
-
+    }
 
 
    class Node {

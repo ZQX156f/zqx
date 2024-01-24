@@ -98,6 +98,10 @@ public class MyArrayQueue<T> {
         return oldValue;
     }
 
+    public boolean isEmpty() {
+        return size == 0;
+    }
+
     /*
         获取队头元素的值
      */
