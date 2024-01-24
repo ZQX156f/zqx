@@ -33,7 +33,7 @@ public class Demo2 {
 
 
         //comparableMyBSTree.printPreOrder();
-        //comparableMyBSTree.printInOrder();
+        comparableMyBSTree.printInOrder();
         //comparableMyBSTree.printPostOrder();
 
         comparableMyBSTree.printBFS();

@@ -250,8 +250,6 @@ public class MyBSTree<T extends Comparable> {
         MyDBLinkedList<T> second = new MyDBLinkedList<>();
         inOderNonRecursive(root, second);
         System.out.println(second);
-
-
     }
 
     public void printPostOrder() {
@@ -306,7 +304,7 @@ public class MyBSTree<T extends Comparable> {
             if (node.right != null) {
                 stack.push(node.right);
             }
-
+            // 入栈左孩子
             if (node.left != null) {
                 stack.push(node.left);
             }
