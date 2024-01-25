@@ -13,6 +13,10 @@ import java.util.ListIterator;
     //        ListIterator<E> listIterator(int index):
     // 		  提供了一个从某个位置开始, 不仅可以向后遍历, 也可以向前遍历的方式previous()
       previous()
+
+
+//        List<E> subList(int fromIndex, int toIndex)
+//        返回列表中指定的 fromIndex（包括 ）和 toIndex（不包括）之间的部分视图。
  */
 public class Demo2 {
 
@@ -38,8 +42,21 @@ public class Demo2 {
         ListIterator<String> listItr = list.listIterator(list.size());
         while (listItr.hasPrevious()) {
             String e = listItr.previous();
-            System.out.println(e);
+            //System.out.println(e);
         }
+
+
+        //  List<E> subList(int fromIndex, int toIndex)
+        // [fromIndex, toIndex)
+        // 视图：我们以为字表和它所对应的父表，是不同的对象各自存储各自的数据，但其实不是，它们公用同一份数据
+        List<String> strings = list.subList(0, 2);
+        System.out.println(strings);
+        // 字表中添加元素
+        strings.add("abcd");
+
+        // 输出被截取的线性表中的元素
+        System.out.println(list);
+
 
     }
 }
