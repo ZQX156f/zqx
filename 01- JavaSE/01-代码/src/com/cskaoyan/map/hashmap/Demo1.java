@@ -1,6 +1,7 @@
 package com.cskaoyan.map.hashmap;
 
 import java.util.HashMap;
+import java.util.Objects;
 
 /*
          loadfactor
@@ -11,8 +12,6 @@ import java.util.HashMap;
         // 5, HashMap不允许存储重复的key (什么叫重复? )
         // 6, HashMap允许存储null作为key
         // 7, 线程不安全
-
-
         ArrayDeque & tail = (tail + 1) & (elements.length -1)   %
 
         // i hash映射的结果
@@ -42,5 +41,40 @@ public class Demo1 {
         hashMap.put("a", 1);
 
         HashMap<String, String> firstMap = new HashMap<>(10);
+
+        HashMap<User, String> secondMap = new HashMap<>();
+
+        User firstUser = new User("zs", 18);
+        User secondUser = new User("zs", 18);
+
+        //     if (p.hash == hash &&
+        //                ((k = p.key) == key || (key != null && key.equals(k))))
+        secondMap.put(firstUser, "1");
+        secondMap.put(secondUser, "2");
+
+    }
+}
+
+class User {
+
+    String name;
+    int age;
+
+    public User(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        User user = (User) o;
+        return age == user.age && Objects.equals(name, user.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, age);
     }
 }
