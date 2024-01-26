@@ -5,6 +5,8 @@ import com.cskaoyan.pacman.status.GameStatus;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.util.LinkedList;
 
 
@@ -15,7 +17,7 @@ import java.util.LinkedList;
  * @Date 2023/12/20 12:01
  * @Version V1.0
  **/
-public class GamePanel extends JPanel {
+public class GamePanel extends JPanel implements KeyListener {
 
     public int xNum;
     public int yNum;
@@ -64,5 +66,38 @@ public class GamePanel extends JPanel {
             drawComponent.draw(g, gameStatus);
 
         }
+    }
+
+    @Override
+    public void keyTyped(KeyEvent e) {
+
+    }
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+        char keyChar = e.getKeyChar();
+        switch (keyChar){
+            case 'w':
+                gameStatus.typedKeys.offer(Position.UP);
+                System.out.println("向上移动");
+                break;
+            case 'a':
+                gameStatus.typedKeys.offer(Position.LEFT);
+                System.out.println("向左移动");
+                break;
+            case 's':
+                gameStatus.typedKeys.offer(Position.DOWN);
+                System.out.println("向下移动");
+                break;
+            case 'd':
+                gameStatus.typedKeys.offer(Position.RIGHT);
+                System.out.println("向右移动");
+                break;
+        }
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
+
     }
 }

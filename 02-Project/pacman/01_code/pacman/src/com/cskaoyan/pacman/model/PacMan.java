@@ -1,6 +1,7 @@
 package com.cskaoyan.pacman.model;
 
 import com.cskaoyan.pacman.agent.Agent;
+import com.cskaoyan.pacman.agent.pacman.EscapeGhostPacManAgent;
 import com.cskaoyan.pacman.config.GameParameter;
 import com.cskaoyan.pacman.draw.Position;
 import com.cskaoyan.pacman.status.GameStatus;
@@ -41,11 +42,12 @@ public class PacMan {
         try {
             //查询的到当前项目中的所有Class对象
             List<Class> classList = ClassUtils.getAllClasses();
-            String ghostAgent = GameParameter.pacmanAgent;
+            //读取到的数据便是escapeGhost
+            String pacmanAgent = GameParameter.pacmanAgent;
             for (Class cl : classList) {
                 //如果遍历出来的类是Agent的子类对象，并且类的名称中包含配置的名称，则是我们需要的
                 if(aClass.isAssignableFrom(cl)){
-                    if(cl.getSimpleName().toLowerCase().contains(ghostAgent.toLowerCase())){
+                    if(cl.getSimpleName().toLowerCase().contains(pacmanAgent.toLowerCase())){
                         this.agent = (Agent) cl.newInstance();
                     }
                 }

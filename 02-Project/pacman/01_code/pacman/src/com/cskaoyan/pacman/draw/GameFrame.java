@@ -50,7 +50,7 @@ public class GameFrame extends JFrame {
         add(gamePanel, new GridBagConstraints());
 
         //添加窗体监听鼠标/键盘事件
-        //addKeyListener(gamePanel);
+        addKeyListener(gamePanel);
     }
 
     public void close() {

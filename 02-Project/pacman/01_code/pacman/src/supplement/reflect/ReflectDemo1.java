@@ -1,4 +1,4 @@
-package com.cskaoyan.pacman.reflect;
+package supplement.reflect;
 
 /**
  * @ClassName ReflectDemo1
@@ -20,7 +20,7 @@ public class ReflectDemo1 {
         Class<Dog> dogClass = Dog.class;
 
         //里面编写它的全限定类名即可
-        Class<?> aClass2 = Class.forName("com.cskaoyan.pacman.reflect.Dog");
+        Class<?> aClass2 = Class.forName("supplement.reflect.Dog");
 
 
     }

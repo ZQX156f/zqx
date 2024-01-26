@@ -20,7 +20,13 @@ map：游戏中所使用的地图存放位置。
 
 ### properties文件
 
-
+| 方法名称                    | 参数                                                     | 返回值      | 说明                                                         |
+| --------------------------- | -------------------------------------------------------- | ----------- | ------------------------------------------------------------ |
+| properties.load()           | 可以传递一个输入流、或者reader都可以                     |             | 利用该方法可以读取指定路径下的properties配置文件，Properties会自行去解析处理，完成封装的过程；和map很类似 |
+| properties.getProperty(xxx) | 便是properties配置文件里面的key的部分，也就是=前面的部分 | =后面的部分 |                                                              |
+|                             |                                                          |             |                                                              |
+|                             |                                                          |             |                                                              |
+|                             |                                                          |             |                                                              |
 
 
 
@@ -32,9 +38,54 @@ map：游戏中所使用的地图存放位置。
 >
 > 
 
+在java代码中提供了一个类，会自行地去解析properties里面的内容数据，要求是：大家在编写properties配置文件时，只需要满足里面编写的是key=value即可(每一行写一个key=value；但是key不要重复)
+
+Properties类。
+
+```java
+public class PropertiesTest {
+
+    public static void main(String[] args) throws IOException {
+        //如果我们希望去读取properties配置文件里面的内容，其实非常简单，只需要借助于Properties类即可
+        Properties properties = new Properties();
+        //需要取读取加载数据的来源
+        //在项目的根目录中有一个app.properties文件，如何获取其输入流
+        FileInputStream inputStream = new FileInputStream(new File("app.properties"));
+        properties.load(inputStream);
+
+        //后续使用，直接从properties类中取出对应的键值对即可，根据key取出value值
+        String app = properties.getProperty("app");
+        String order = properties.getProperty("order");
+        System.out.println(app);
+        System.out.println(order);
+    }
+}
+```
+
+
+
 
 
 ### 反射
+
+| 方法名称                   | 参数                                                         | 返回值                                          | 说明                                                         |
+| -------------------------- | ------------------------------------------------------------ | ----------------------------------------------- | ------------------------------------------------------------ |
+| 对象.getClass()            | -                                                            | 返回的便是当前类对应的Class对象                 | Class对象是JVM中的，用来去存储class文件信息的一个对象。      |
+| 类名.class                 | -                                                            | 返回的便是当前类对应的Class对象                 |                                                              |
+| Class.forName(xxx)         | 全限定类名                                                   | 返回的便是当前类对应的Class对象                 | 全限定类名就是包含包路径的一个完整的名称                     |
+| class.getConstructors()    | -                                                            | 返回的是对应的类中所有的构造函数                |                                                              |
+| class.getConstructor(xxx)  | 构造函数里面的参数类型                                       | 返回对应的构造函数                              | 根据我们传递进来的参数类型顺序，去匹配所有的构造函数，如果匹配到则返回 |
+| class.getFields()          | -                                                            | 返回的是对应的类中所有的成员变量、属性          | 无法获取private修饰的属性                                    |
+| class.getField(xxx)        | 当前成员变量、属性的名称                                     | 根据对应的名称，得到对应的成员变量信息          |                                                              |
+| class.getDeclaredFields()  | -                                                            | 返回的是所有的成员变量、属性，包含private修饰的 |                                                              |
+| class.getMethods()         | -                                                            | 返回的是当前类中所有的方法                      | 无法获取private修饰的方法                                    |
+| class.getMethod(xxx,xxx)   | 根据方法的名称、方法的形参类型                               | 返回的是符合条件的方法                          |                                                              |
+| class.getDeclaredMethods() | -                                                            | 返回的是全部的方法，包含private修饰的方法       |                                                              |
+| field.set(xxx,xxx)         | 第一个参数表示的是对象；第二个参数表示的是赋的值             | -                                               | 给第一个参数对象的指定成员变量赋值，赋第二个参数的值         |
+| field.setAccessible(true)  | -                                                            | -                                               | 如果是private修饰的属性是无法利用上述方法进行赋值的，先使用当前方法进行暴力破解 |
+| method.invoke(obj,args)    | 第一个参数表示的是哪个对象；第二个参数表示的是调用方法时传递进来的参数 | 调用的方法的返回值结果                          |                                                              |
+
+
 
 > 关于反射
 >
@@ -105,7 +156,7 @@ public class ReflectDemo2 {
 
 2.获取到对应的方法、属性之后可以做什么事情呢？
 
-利用构造函数来实例化对象
+利用构造函数来实例化对象(利用这种方式和之前大家new 构造函数的方式其实没有什么本质的区别。大家都是在调用构造函数。)
 
 ```java
 public class ReflectDemo3 {
@@ -173,6 +224,49 @@ public class ReflectDemo4 {
         }
 
         System.out.println(object);
+    }
+}
+```
+
+
+
+通过反射调用方法
+
+```java
+public class ReflectDemo5 {
+
+    public static void main(String[] args) throws ClassNotFoundException, InvocationTargetException, InstantiationException, IllegalAccessException {
+        //Student类用来去描述学生的信息，无论张三、李四，均可以使用Student来封装表示
+
+        //Class对象是用来表示不同的class信息的，无论Student.class还是Teacher.class，均可以使用Class对象来表示
+
+        //获取Student对应的Class对象
+        Class<?> studentClass = Class.forName("com.cskaoyan.pacman.reflect.Student");
+
+        Object o = null;
+        //利用Class对象来获取构造函数，实例化一个对象出来
+        Constructor<?>[] constructors = studentClass.getConstructors();
+        for (Constructor<?> constructor : constructors) {
+            //通过参数个数为0的，我们选择无参构造函数来实例化对象
+            int parameterCount = constructor.getParameterCount();
+            if(parameterCount == 0){
+                o = constructor.newInstance();
+            }
+        }
+
+        //通过反射去调用某个方法 setUsername方法
+        Method[] methods = studentClass.getMethods();
+        for (Method method : methods) {
+            if(method.getName().equals("setUsername")){
+                //调用对应的方法 调用setUsername方法，调用的是哪个对象里面的这个方法呢？
+                //需要传递两个参数：参数一：指的是调用哪个对象里面的setUsername方法
+                //参数二：在调用这个setUsername方法时，传递进去的参数是多少
+                //方法的返回值便是方法的调用结果
+                method.invoke(o, "lisi");
+            }
+        }
+        System.out.println(o);
+
     }
 }
 ```

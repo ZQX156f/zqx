@@ -1,5 +1,6 @@
 package com.cskaoyan.pacman.status;
 
+import com.cskaoyan.pacman.draw.Position;
 import com.cskaoyan.pacman.model.Coordinate;
 import com.cskaoyan.pacman.model.Ghost;
 import com.cskaoyan.pacman.model.PacMan;
@@ -46,6 +47,8 @@ public class GameStatus {
 
     //pacman信息
     public PacMan pacMan;
+
+    public Queue<Position> typedKeys = new LinkedList<>();
 
     //在游戏状态对象中去进一步初始化地图、pacman、幽灵、食物等
     public GameStatus(String gameMap) {

@@ -1,4 +1,4 @@
-package com.cskaoyan.pacman.reflect;
+package supplement.reflect;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
@@ -19,7 +19,7 @@ public class ReflectDemo2 {
         //Class对象是用来表示不同的class信息的，无论Student.class还是Teacher.class，均可以使用Class对象来表示
 
         //获取Student对应的Class对象
-        Class<?> studentClass = Class.forName("com.cskaoyan.pacman.reflect.Student");
+        Class<?> studentClass = Class.forName("supplement.reflect.Student");
 
         //利用这个方法可以获取所有的构造函数
         Constructor<?>[] constructors = studentClass.getConstructors();
@@ -38,7 +38,7 @@ public class ReflectDemo2 {
 
         System.out.println("===============================");
 
-        Class<?> teacherClass = Class.forName("com.cskaoyan.pacman.reflect.Teacher");
+        Class<?> teacherClass = Class.forName("supplement.reflect.Teacher");
 
         Field[] fields1 = teacherClass.getFields();
         Method[] methods1 = teacherClass.getMethods();
