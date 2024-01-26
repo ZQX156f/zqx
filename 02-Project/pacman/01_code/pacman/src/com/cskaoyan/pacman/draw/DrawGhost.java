@@ -25,8 +25,10 @@ public class DrawGhost implements DrawComponent{
     public void draw(Graphics g, GameStatus status) {
         int ratio = GameParameter.ratio;
 
-        Ghost ghost = status.ghost;
-
+            Ghost ghost = status.ghost;
+            if(ghost == null){
+                return;
+            }
             Coordinate coordinate = ghost.coordinate;
             int xIndex = coordinate.x;
             int yIndex = coordinate.y;

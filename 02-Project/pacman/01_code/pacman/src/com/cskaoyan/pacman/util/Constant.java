@@ -17,6 +17,4 @@ public class Constant {
 
     public static final Character GHOST = 'G';
 
-    public static final Character ENERGY = 'O';
-
 }

@@ -16,6 +16,7 @@ public class MapLoader {
     public static List<String> load(String gameMap) {
         List<String> list = new ArrayList<>();
         try {
+            //会读取项目根目录下map目录中以.txt结尾的文件
             BufferedReader reader = new BufferedReader(new FileReader("map/" + gameMap + ".txt"));
             String line = null;
             while ((line = reader.readLine()) != null){

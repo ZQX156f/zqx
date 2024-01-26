@@ -19,6 +19,8 @@ import java.util.Queue;
  **/
 public class Ghost {
     public Coordinate coordinate;
+
+    //行进计划、行进路线
     public Queue<Position> routerPlan;
 
     private Agent agent;

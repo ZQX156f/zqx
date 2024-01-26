@@ -14,5 +14,6 @@ import java.util.Queue;
  **/
 public interface Agent {
 
+    //返回的便是一个Position的队列；最终返回的便是一个方位的集合
     Queue<Position> getPlan(GameStatus gameStatus);
 }

@@ -20,18 +20,25 @@ import java.util.List;
  **/
 public class Controller {
 
+    //游戏的运行状态，默认是运行
     private RunStatus status = RunStatus.RUN;
 
+    //游戏的提示信息
     private String message;
 
+    //当前游戏的状态，比如pacman、幽灵所在的位置
     private GameStatus gameStatus;
 
+    //frame是渲染页面所必须的，了解即可
+    //课后大家可以将项目的基准代码先自己敲一遍，但是如果里面涉及的是绘图相关的代码，不用去研究
+    //直接复制参考代码即可
     private GameFrame gameFrame;
 
     public void start() {
 
+        //初始化游戏状态；里面某张地图来进行初始化
         this.gameStatus = new GameStatus(GameParameter.gameMap);
-
+        //渲染页面需要用到的数据
         this.gameFrame = new GameFrame(gameStatus);
 
         redraw();
@@ -46,6 +53,7 @@ public class Controller {
         }
         boolean pacmanMove = true;
         while (true){
+            //幽灵和pacman进行交替的运动
             if(gameStatus.ghost != null  && !pacmanMove){
                 gameStatus.ghostMove();
             }else {

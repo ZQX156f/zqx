@@ -10,7 +10,9 @@ package com.cskaoyan.pacman.start;
 public class GameStartup {
 
     public static void main(String[] args) {
+        //定义了一个控制器对象
         Controller controller = new Controller();
+        //调用了控制器的start方法运行了当前游戏
         controller.start();
     }
 }

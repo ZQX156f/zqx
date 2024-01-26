@@ -163,9 +163,11 @@ public class GameStatus {
     }
 
     public void ghostMove() {
+        //如果幽灵的行进路线、计划是空，则去获取一个行进计划
         if(ghost.routerPlan == null || ghost.routerPlan.isEmpty()){
                 ghost.setPlan(this);
         }
+        //幽灵按照行进计划去移动
         ghost.move();
     }
 
