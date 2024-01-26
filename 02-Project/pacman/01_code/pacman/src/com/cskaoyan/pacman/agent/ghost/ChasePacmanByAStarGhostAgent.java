@@ -1,5 +1,6 @@
-package com.cskaoyan.pacman.agent;
+package com.cskaoyan.pacman.agent.ghost;
 
+import com.cskaoyan.pacman.agent.Agent;
 import com.cskaoyan.pacman.draw.Position;
 import com.cskaoyan.pacman.status.GameStatus;
 
@@ -13,7 +14,7 @@ import java.util.Queue;
  * @Date 2023/12/21 14:33
  * @Version V1.0
  **/
-public class ChasePacmanByAStarGhostAgent implements Agent{
+public class ChasePacmanByAStarGhostAgent implements Agent {
     @Override
     public Queue<Position> getPlan(GameStatus gameStatus) {
         Queue<Position> positions = new LinkedList<>();
