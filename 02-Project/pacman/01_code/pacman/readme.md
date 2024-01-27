@@ -271,3 +271,33 @@ public class ReflectDemo5 {
 }
 ```
 
+
+
+## 拉取课堂代码
+
+之前的学习过程中，推荐大家使用idea的clone from version control来拉取代码。实际上，有一种更加方便的方式，但是需要安装一个软件，叫做git。
+
+![image-20240127093313460](image/image-20240127093313460.png)
+
+安装当前的安装包，安装过后，需要确保在环境变量中包含该软件的目录。默认会安装在C:\Program Files\Git
+
+随后到环境变量中去确认一下git是否在其中，这一步的目的是为了接下来可以在任意目录下执行git指令。
+
+![image-20240127093446814](image/image-20240127093446814.png)
+
+
+
+如何拉取代码呢？
+
+希望在D:/24short目录中拉取我们的上课代码。
+
+![image-20240127093631236](image/image-20240127093631236.png)
+
+在git窗口中输入如下指令 git clone https://gitee.com/cskaoyan-training-camp/2024-short-offline.git
+
+![image-20240127093908768](image/image-20240127093908768.png)
+
+此时便clone克隆仓库成功。**上述这条指令只需要执行一次即可，后续每次更新代码时不需要执行这条指令。**
+
+
+
