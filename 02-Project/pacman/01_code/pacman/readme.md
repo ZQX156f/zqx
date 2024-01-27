@@ -301,3 +301,13 @@ public class ReflectDemo5 {
 
 
 
+后续更新代码，那么我需要进入到2024-short-offline目录中去执行
+
+![image-20240127094227628](image/image-20240127094227628.png)
+
+**注意：执行git pull指令和执行git clone指令时目录是不一样的。**
+
+
+
+使用idea打开项目时，一定要确保其是一个idea中的项目才可以，否则很容易出现打开的项目运行异常。src目录的父级目录才是idea中的一个项目。
+

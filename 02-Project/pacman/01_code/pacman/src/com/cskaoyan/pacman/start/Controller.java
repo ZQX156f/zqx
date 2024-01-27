@@ -134,7 +134,7 @@ public class Controller {
             gameStatus.availableFoods--;
 
             this.status = RunStatus.RUN;
-            return;
+//            return;
         }
 
         // 食物是否吃完了
