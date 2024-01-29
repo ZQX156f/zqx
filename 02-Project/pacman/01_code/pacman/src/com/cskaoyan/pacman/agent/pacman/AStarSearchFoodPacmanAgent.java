@@ -32,7 +32,7 @@ public class AStarSearchFoodPacmanAgent implements Agent {
     //如果今后，你希望使用深度或者广度来去实现查找食物坐标，只需要变更接口的指向即可
     FoodStrategy foodStrategy = new DoubleCircularFoodStrategy();
 
-    MathDistance distance = new EuclideanDistance();
+    MathDistance distance = new ManhattanDistance();
 
     @Override
     public Queue<Position> getPlan(GameStatus gameStatus) {
