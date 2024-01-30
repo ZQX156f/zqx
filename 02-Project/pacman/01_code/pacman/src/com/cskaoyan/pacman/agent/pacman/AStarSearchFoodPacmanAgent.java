@@ -75,7 +75,6 @@ public class AStarSearchFoodPacmanAgent implements Agent {
             //最终需要判断该节点是否是食物节点
             if(smallestNode.coordinate.equals(foodCoordinate)){
                 //找到食物
-                System.out.println("=========");
                 return Calculation.getPositions(smallestNode);
             }
 

@@ -110,4 +110,14 @@ public class Calculation {
         nodes.pollFirst();
         return nodes;
     }
+
+    public static List<Coordinate> getRouteCoordinates(Node node){
+        List<Coordinate> routeCoordinates = new ArrayList<>();
+        List<Node> routeNodes = getRouteNodes(node);
+        for (int i = 0; i < routeNodes.size(); i++) {
+            Node routeNode = routeNodes.get(i);
+            routeCoordinates.add(routeNode.coordinate);
+        }
+        return routeCoordinates;
+    }
 }
