@@ -55,6 +55,9 @@ public class EscapeGhostPacManAgent implements Agent {
 
         treeSet.add(initNode);
 
+        Set<Coordinate> searchedCoordinates = new HashSet<>();
+
+
         while (! treeSet.isEmpty()){
             //如果不为空，循环往复地去取出最小花费的节点，取出周围的临近节点，计算花费，再次放入到treeset中.....
             Node smallestNode = treeSet.pollFirst();
@@ -134,6 +137,12 @@ public class EscapeGhostPacManAgent implements Agent {
 
             List<Node> aroundNodes = Calculation.getAroundNodes(smallestNode, gameStatus);
             for (Node adNode : aroundNodes) {
+                //这部分代码还是需要加上，否则会进入A找B，B找A陷入死循环中
+                if(searchedCoordinates.contains(adNode.coordinate)){
+                    continue;
+                }else {
+                    searchedCoordinates.add(adNode.coordinate);
+                }
                 treeSet.add(new Node(adNode.coordinate, adNode.preNode, adNode.position, smallestNode.preCost + 1, smallestNode.preCost + 1 + distance.getDistance(adNode.coordinate, foodCoordinate)));
             }
         }
