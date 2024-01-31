@@ -4,6 +4,7 @@ import com.cskaoyan.pacman.agent.Agent;
 import com.cskaoyan.pacman.distance.ManhattanDistance;
 import com.cskaoyan.pacman.distance.MathDistance;
 import com.cskaoyan.pacman.draw.Position;
+import com.cskaoyan.pacman.food.BFSFoodStrategy;
 import com.cskaoyan.pacman.food.DoubleCircularFoodStrategy;
 import com.cskaoyan.pacman.food.FoodStrategy;
 import com.cskaoyan.pacman.model.Coordinate;
@@ -29,7 +30,7 @@ import java.util.*;
  **/
 public class EscapeGhostPacManAgent implements Agent {
 
-    FoodStrategy foodStrategy = new DoubleCircularFoodStrategy();
+    FoodStrategy foodStrategy = new BFSFoodStrategy();
 
     MathDistance distance = new ManhattanDistance();
 
@@ -40,6 +41,7 @@ public class EscapeGhostPacManAgent implements Agent {
         Coordinate pacmanCoordinate = gameStatus.pacMan.coordinate;
 
         Coordinate foodCoordinate = foodStrategy.getFoodCoordinate(gameStatus);
+        System.out.println("foodCoordinate:" + foodCoordinate);
 
         Node initNode = new Node(pacmanCoordinate, null, null, 0, distance.getDistance(pacmanCoordinate, foodCoordinate));
 
