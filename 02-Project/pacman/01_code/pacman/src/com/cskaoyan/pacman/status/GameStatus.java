@@ -60,6 +60,9 @@ public class GameStatus {
 
     }
 
+    public GameStatus() {
+    }
+
     private void initMap(List<String> mapData) {
         yNum = mapData.size();
         xNum = mapData.get(0).length();
