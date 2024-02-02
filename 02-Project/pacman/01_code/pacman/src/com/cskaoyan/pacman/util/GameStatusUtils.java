@@ -35,7 +35,6 @@ public class GameStatusUtils {
         copy.foods[newPacmanCoordinate.x][newPacmanCoordinate.y] = false;
 
         //墙永远不会变，永远不会修改
-        boolean[][] walls = origin.walls;
 
         copy.walls = origin.walls;
 
@@ -61,7 +60,6 @@ public class GameStatusUtils {
         }
 
         //墙永远不会变，永远不会修改
-        boolean[][] walls = origin.walls;
         copy.walls = origin.walls;
 
         return copy;

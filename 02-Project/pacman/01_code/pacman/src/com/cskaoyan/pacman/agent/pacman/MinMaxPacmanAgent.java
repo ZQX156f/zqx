@@ -32,7 +32,7 @@ public class MinMaxPacmanAgent implements Agent {
     }
 
     //depth层级，就是表示的是思考接下来的几步操作；视野的宽度
-    private ScorePosition max(int depth, GameStatus gameStatus) {
+    public ScorePosition max(int depth, GameStatus gameStatus) {
         if(depth < 1){
             //结束了 todo
             return new ScorePosition(0, Position.STOP);
@@ -54,6 +54,7 @@ public class MinMaxPacmanAgent implements Agent {
             //如果pacman和食物相遇了，那么当前得分先加50分
             if(gameStatus.foods[item.coordinate.x][item.coordinate.y]){
                 stepScore += 50;
+                stepScore += depth;
             }
             //还需要判断pacman走的这一步会不会和幽灵相遇
             if(item.coordinate.equals(gameStatus.ghost.coordinate)){
@@ -80,7 +81,7 @@ public class MinMaxPacmanAgent implements Agent {
         return initState;
     }
 
-    private ScorePosition min(int depth, GameStatus gameStatus) {
+    public ScorePosition min(int depth, GameStatus gameStatus) {
         //在pacman的策略中，min其实指的便是幽灵
         Coordinate ghostCoordinate = gameStatus.ghost.coordinate;
 

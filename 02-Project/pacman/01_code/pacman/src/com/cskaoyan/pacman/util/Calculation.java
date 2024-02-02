@@ -63,10 +63,7 @@ public class Calculation {
 
         List<Node> nodeList = new ArrayList<>();
 
-        if(!walls[leftCoordinate.x][leftCoordinate.y]){
-            //左坐标不是墙
-            nodeList.add(new Node(leftCoordinate, node, Position.LEFT));
-        }
+
         if(!walls[rightCoordinate.x][rightCoordinate.y]){
             //右坐标不是墙
             nodeList.add(new Node(rightCoordinate, node, Position.RIGHT));
@@ -75,6 +72,10 @@ public class Calculation {
         if(!walls[upCoordinate.x][upCoordinate.y]){
             //上坐标不是墙
             nodeList.add(new Node(upCoordinate, node, Position.UP));
+        }
+        if(!walls[leftCoordinate.x][leftCoordinate.y]){
+            //左坐标不是墙
+            nodeList.add(new Node(leftCoordinate, node, Position.LEFT));
         }
         if(!walls[downCoordinate.x][downCoordinate.y]){
             //下坐标不是墙
