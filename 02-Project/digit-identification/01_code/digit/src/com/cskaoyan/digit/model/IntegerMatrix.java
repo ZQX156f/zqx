@@ -15,4 +15,13 @@ public class IntegerMatrix {
     public IntegerMatrix(int capacity) {
         this.element = new int[capacity][capacity];
     }
+
+    //给当前矩阵的每一位都加smoothing的量
+    public void add(Integer smoothing) {
+        for (int y = 0; y < this.element.length; y++) {
+            for (int x = 0; x < this.element[y].length; x++) {
+                element[y][x] = element[y][x] + smoothing;
+            }
+        }
+    }
 }

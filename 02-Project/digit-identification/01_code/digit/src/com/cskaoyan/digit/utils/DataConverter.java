@@ -17,7 +17,7 @@ public class DataConverter {
     static {
         encodeMap.put(' ', 0);
         encodeMap.put('+', 1);
-        encodeMap.put('#', 2);
+        encodeMap.put('#', 1);
     }
 
     public static int convert(char pixel) {

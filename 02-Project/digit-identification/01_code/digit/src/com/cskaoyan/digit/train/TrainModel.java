@@ -14,4 +14,6 @@ import java.util.List;
 public interface TrainModel {
 
     void train(List<IntegerMatrix> trainImages, List<String> trainLabels);
+
+    void validate(List<IntegerMatrix> validationImages, List<String> validationLabels);
 }

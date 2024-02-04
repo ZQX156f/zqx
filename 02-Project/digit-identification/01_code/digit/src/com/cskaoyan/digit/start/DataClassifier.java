@@ -27,7 +27,15 @@ public class DataClassifier {
         List<IntegerMatrix> trainImages = DataLoader.loadImage(trainingImagePath, ConfigParameter.training);
         //还需要进一步去处理标记label
         List<String> trainLabels = DataLoader.loadLabel(trainingLabelPath, ConfigParameter.training);
+
+        String validationImagePath = ConfigParameter.validationImage;
+        String validationLabelPath = ConfigParameter.validationLabel;
+        //去加载validation 数据集
+        List<IntegerMatrix> validationImages = DataLoader.loadImage(validationImagePath, ConfigParameter.validation);
+        List<String> validationLabels = DataLoader.loadLabel(validationLabelPath, ConfigParameter.validation);
+
         TrainModel model = new NaiveBayes();
         model.train(trainImages, trainLabels);
+        model.validate(validationImages, validationLabels);
     }
 }

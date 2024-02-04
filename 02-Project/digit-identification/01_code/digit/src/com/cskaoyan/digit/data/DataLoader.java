@@ -15,12 +15,12 @@ import java.util.List;
  * @Version V1.0
  **/
 public class DataLoader {
-    public static List<IntegerMatrix> loadImage(String trainingImagePath, Integer training) {
+    public static List<IntegerMatrix> loadImage(String imagePath, Integer number) {
         //需要读取指定的数据集 使用BufferedReader来读取，因为可以使用readLine方法
         List<IntegerMatrix> sampleList = new ArrayList<>();
         try {
-            BufferedReader bufferedReader = new BufferedReader(new FileReader(new File(trainingImagePath)));
-            for (int i = 0; i < training; i++) {
+            BufferedReader bufferedReader = new BufferedReader(new FileReader(new File(imagePath)));
+            for (int i = 0; i < number; i++) {
                 //一共读取指定的数据量的数据
                 //一共读取training数量的数据，那么对应的样本数量也就是training，对应的IntegerMatrix对象也就是这么多
                 //为什么写28呢？因为我们的数据样本是28*28的矩阵
@@ -49,12 +49,12 @@ public class DataLoader {
         return sampleList;
     }
 
-    public static List<String> loadLabel(String trainingLabelPath, Integer training) {
+    public static List<String> loadLabel(String labelPath, Integer number) {
         List<String> labels = new ArrayList<>();
         try {
-            BufferedReader bufferedReader = new BufferedReader(new FileReader(new File(trainingLabelPath)));
+            BufferedReader bufferedReader = new BufferedReader(new FileReader(new File(labelPath)));
 
-            for (int i = 0; i < training; i++) {
+            for (int i = 0; i < number; i++) {
                 //读取到的每一行就是一个一个的标记
                 String label = bufferedReader.readLine();
                 labels.add(label);
