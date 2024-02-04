@@ -1,6 +1,7 @@
 package com.cskaoyan.digit.train;
 
 import com.cskaoyan.digit.config.ConfigParameter;
+import com.cskaoyan.digit.model.DigitProbability;
 import com.cskaoyan.digit.model.DoubleMatrix;
 import com.cskaoyan.digit.model.IntegerMatrix;
 import com.cskaoyan.digit.utils.Constant;
@@ -25,9 +26,10 @@ import java.util.*;
  * 只要求出上述10个概率值，取出一个最大的概率值，那么便是我们猜测的结果数字
  * 在此期间还需要引入平滑度，防止出现0概率，导致最终结果全部都是0
  * 还需要引入lg和的形式，防止小数相乘之后导致的数值急剧缩小，无法比较的情况
- * 1.先解决P(Digit0)~P(Digit9)先验概率的问题
+ * 1.先解决P(Digit0)~P(Digit9)先验概率的问题:统计每个数字出现的次数  / 总的数据量
  * 2.需要获取每个数字对应的全部训练集的矩阵，统计每一位出现0和1的次数；每个数字需要有两个矩阵：0矩阵  1矩阵；0矩阵里面存放每一位出现0的次数情况；1矩阵存放每一位出现1的次数情况，用什么数据结构呢？把0矩阵和1矩阵放到map中；再把这个map放到数字对应的map value中，也就是一个大map嵌套着一个小map
  * 3、加入一个平滑度，防止出现概率0的情况
+ * 4、引入lg和的形式，防止乘积的数值太小，不太好比较
  * @Author 远志 zhangsong@cskaoyan.onaliyun.com
  * @Date 2024/2/4 10:23
  * @Version V1.0
@@ -107,15 +109,41 @@ public class NaiveBayes implements TrainModel{
 
     private String guess(IntegerMatrix validationMatrix) {
         //给定了一个矩阵，里面每一位是0还是1我们是可以知道的，假设它是0，计算其总概率值，假设是1，计算其总概率值......直至最后取出概率值最大的一个，那么便是猜测的数字
+        //在外面创建一个treeset，传递进去DigitProbability对象，按照result排序
+        TreeSet<DigitProbability> treeSet = new TreeSet<>(new Comparator<DigitProbability>() {
+            @Override
+            public int compare(DigitProbability o1, DigitProbability o2) {
+                if(o1.probability < o2.probability){
+                    return -1;
+                }
+                return 1;
+            }
+        });
         for (int i = 0; i < labels.size(); i++) {
             String label = labels.get(i);
             //计算在当前数字label情况下，该矩阵每一位是0还是1的概率值
             double result = 0.0;
 //            P(Digitn)·P(C0,0=0|Digitn)·........P(C27,27=0|Digitn)----->导致数值很小，采用lg和的方式不会改变最终的大小关系lg(P(Digitn)) + lg(P(C0,0=0|Digitn)) + .....+ lg(P(C27,27=0|Digitn))
             result += Math.log10(probabilityMap.get(label));
+            Map<String, DoubleMatrix> featureMap = probabilityMatrix.get(label);
+            //遍历validationMatrix矩阵中的每一位，看它是数字0还是数字1，根据当前的label，取得这个位为0或者1的概率
+            for (int y = 0; y < validationMatrix.element.length; y++) {
+                for (int x = 0; x < validationMatrix.element[y].length; x++) {
+                    int v = validationMatrix.element[y][x];
+                    if(v == 0){
+                        DoubleMatrix zeroMatrix = featureMap.get(Constant.FEATURE_ZERO);
+                        result += Math.log10(zeroMatrix.element[y][x]);
+                    }else {
+                        DoubleMatrix oneMatrix = featureMap.get(Constant.FEATURE_ONE);
+                        result += Math.log10(oneMatrix.element[y][x]);
+                    }
+                }
+            }
 
+            //所以我们此处需要得到result最大的对应的数字label
+            treeSet.add(new DigitProbability(label, result));
         }
-        return null;
+        return treeSet.pollLast().digit;
     }
 
     //生成概率矩阵
