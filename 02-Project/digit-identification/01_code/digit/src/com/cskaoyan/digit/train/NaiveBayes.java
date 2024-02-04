@@ -143,6 +143,7 @@ public class NaiveBayes implements TrainModel{
             //所以我们此处需要得到result最大的对应的数字label
             treeSet.add(new DigitProbability(label, result));
         }
+        //因为数据是按照升序进行排序的，所以最后的便是最大的
         return treeSet.pollLast().digit;
     }
 
