@@ -3,6 +3,8 @@ package com.cskaoyan.digit.start;
 import com.cskaoyan.digit.config.ConfigParameter;
 import com.cskaoyan.digit.data.DataLoader;
 import com.cskaoyan.digit.model.IntegerMatrix;
+import com.cskaoyan.digit.train.NaiveBayes;
+import com.cskaoyan.digit.train.TrainModel;
 
 import java.io.IOException;
 import java.util.List;
@@ -25,5 +27,7 @@ public class DataClassifier {
         List<IntegerMatrix> trainImages = DataLoader.loadImage(trainingImagePath, ConfigParameter.training);
         //还需要进一步去处理标记label
         List<String> trainLabels = DataLoader.loadLabel(trainingLabelPath, ConfigParameter.training);
+        TrainModel model = new NaiveBayes();
+        model.train(trainImages, trainLabels);
     }
 }
