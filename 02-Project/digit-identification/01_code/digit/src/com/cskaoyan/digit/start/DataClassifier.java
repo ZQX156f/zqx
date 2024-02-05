@@ -6,7 +6,6 @@ import com.cskaoyan.digit.model.IntegerMatrix;
 import com.cskaoyan.digit.train.NaiveBayes;
 import com.cskaoyan.digit.train.TrainModel;
 
-import java.io.IOException;
 import java.util.List;
 
 /**
@@ -37,5 +36,6 @@ public class DataClassifier {
         TrainModel model = new NaiveBayes();
         model.train(trainImages, trainLabels);
         model.validate(validationImages, validationLabels);
+
     }
 }
