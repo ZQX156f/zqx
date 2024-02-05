@@ -24,4 +24,34 @@ public class IntegerMatrix {
             }
         }
     }
+
+    public int multiply(IntegerMatrix weight) {
+        int result = 0;
+        //矩阵的每一位和形参里面的矩阵的每一位进行相乘运算
+        for (int y = 0; y < this.element.length; y++) {
+            for (int x = 0; x < this.element[y].length; x++) {
+                result += this.element[y][x] * weight.element[y][x];
+            }
+        }
+        return result;
+    }
+
+    public void removeWeight(IntegerMatrix trainData) {
+        //根据w的更新公式条件  w = w - x
+        for (int y = 0; y < this.element.length; y++) {
+            for (int x = 0; x < this.element[y].length; x++) {
+                //一一对应的位数，将权重当前位置的值 - 当前位置的x的值
+                this.element[y][x] -= trainData.element[y][x];
+            }
+        }
+    }
+
+    public void increaseWeight(IntegerMatrix trainData) {
+        for (int y = 0; y < this.element.length; y++) {
+            for (int x = 0; x < this.element[y].length; x++) {
+                //一一对应的位数，将权重当前位置的值 - 当前位置的x的值
+                this.element[y][x] += trainData.element[y][x];
+            }
+        }
+    }
 }

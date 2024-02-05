@@ -4,6 +4,7 @@ import com.cskaoyan.digit.config.ConfigParameter;
 import com.cskaoyan.digit.data.DataLoader;
 import com.cskaoyan.digit.model.IntegerMatrix;
 import com.cskaoyan.digit.train.NaiveBayes;
+import com.cskaoyan.digit.train.Perceptron;
 import com.cskaoyan.digit.train.TrainModel;
 
 import java.util.List;
@@ -33,9 +34,13 @@ public class DataClassifier {
         List<IntegerMatrix> validationImages = DataLoader.loadImage(validationImagePath, ConfigParameter.validation);
         List<String> validationLabels = DataLoader.loadLabel(validationLabelPath, ConfigParameter.validation);
 
-        TrainModel model = new NaiveBayes();
-        model.train(trainImages, trainLabels);
-        model.validate(validationImages, validationLabels);
+        TrainModel bayes = new NaiveBayes();
+        bayes.train(trainImages, trainLabels);
+        bayes.validate(validationImages, validationLabels);
 
+        TrainModel perceptron = new Perceptron();
+        perceptron.train(trainImages, trainLabels);
+
+        perceptron.validate(validationImages, validationLabels);
     }
 }
