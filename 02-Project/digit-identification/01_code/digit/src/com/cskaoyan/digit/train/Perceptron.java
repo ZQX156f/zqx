@@ -50,10 +50,10 @@ public class Perceptron implements TrainModel {
         TreeSet<DigitResult> treeSet = new TreeSet<>(new Comparator<DigitResult>() {
             @Override
             public int compare(DigitResult o1, DigitResult o2) {
-                if(o1.result < o2.result){
-                    return -1;
+                if(o1.result > o2.result){
+                    return 1;
                 }
-                return 1;
+                return -1;
             }
         });
         for (String label : labels) {
