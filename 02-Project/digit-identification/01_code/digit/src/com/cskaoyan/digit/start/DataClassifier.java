@@ -5,7 +5,6 @@ import com.cskaoyan.digit.data.DataLoader;
 import com.cskaoyan.digit.model.IntegerMatrix;
 import com.cskaoyan.digit.train.NaiveBayes;
 import com.cskaoyan.digit.train.Perceptron;
-import com.cskaoyan.digit.train.Perceptron2;
 import com.cskaoyan.digit.train.TrainModel;
 
 import java.util.List;

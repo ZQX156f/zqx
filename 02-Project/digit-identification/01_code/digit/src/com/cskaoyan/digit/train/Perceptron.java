@@ -44,6 +44,8 @@ public class Perceptron implements TrainModel {
 
     //去猜测究竟是数字几？实际上是不是只要求找到一个w·x最大的即可 w·x = w1x1 + w2x2 + w3x3 + ....+ w784x784
     //不就等于w0,0 x0,0 + w1,0 x1,0
+    //f(x) = w·x + b
+    //f(x) = w3·x - w5·x
     private String classify(IntegerMatrix trainData) {
         //从0~9依次去猜
         //我们要去取最大的result对应的数字
