@@ -1,1 +1,1 @@
-# Java2024短期线下班课程资料
+# JavaSE & Projects
